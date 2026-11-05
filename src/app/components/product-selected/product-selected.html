@@ -1,0 +1,7 @@
+<h1>Produit sélectionné</h1>
+
+@if (product()) {
+  <p>{{ product() | json }}</p>
+} @else {
+  <p>Produit introuvable</p>
+}

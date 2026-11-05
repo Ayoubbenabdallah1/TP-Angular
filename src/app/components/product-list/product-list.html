@@ -1,1 +1,9 @@
-<p>product-list works!</p>
+<h1>Liste des produits</h1>
+<ul>
+  @for (product of products(); track product.id) {
+    <li>
+      {{ product.id }} -- {{ product.name }}
+      <a [routerLink]="['/products', product.id]">Détails</a>
+    </li>
+  }
+</ul>
