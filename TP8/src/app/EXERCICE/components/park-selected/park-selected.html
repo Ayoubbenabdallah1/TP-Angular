@@ -1,0 +1,15 @@
+@if (park(); as p) {
+  <div class="card text-center m-3">
+    <div class="card-header"><h5>{{ p.name | uppercase }}</h5></div>
+    <div class="card-body">
+      <ul class="text-start">
+        <li>Date d'ouverture: {{ p.openingDate | date:'d MMMM yyyy' }}</li>
+        @if (p.hours) { <li>Horaire : {{ p.hours }}</li> }
+        @if (p.location) { <li>Localisation : {{ p.location }}</li> }
+      </ul>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary" (click)="goBack()">Retour</button>
+    </div>
+  </div>
+}

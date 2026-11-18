@@ -1,0 +1,12 @@
+<li class="list-group-item d-flex justify-content-between align-items-center">
+  <div>
+    <img [src]="park().photo" [alt]="park().name" width="50" height="50">
+    Id: {{ park().id }} <strong>{{ park().name }}</strong>
+    <span class="badge bg-primary">{{ park().nbLikes }}</span>
+  </div>
+  <div>
+    <a class="btn btn-info" [routerLink]="['/parks', park().id]">Infos</a>
+    <button class="btn btn-danger" (click)="liked.emit(park())">Likes</button>
+    <button class="btn btn-secondary" (click)="deleted.emit(park().id)">Supprimer</button>
+  </div>
+</li>
