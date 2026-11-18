@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JsonPipe } from '@angular/common';
 import { ProductService } from '../../services/product-service';
 import { Product } from '../../model/product';
@@ -12,12 +12,17 @@ import { Product } from '../../model/product';
 })
 export class ProductSelected implements OnInit {
   private readonly activatedRoute = inject(ActivatedRoute);
-  private readonly productService = inject(ProductService); // 1
-  product = signal<Product | undefined>(undefined);        // 2
+  private readonly productService = inject(ProductService);
+  private readonly router = inject(Router);
+  product = signal<Product | undefined>(undefined);
 
   ngOnInit(): void {
     let idProduct = this.activatedRoute.snapshot.paramMap.get('idP');
-    if (idProduct) // 3
+    if (idProduct)
       this.product.set(this.productService.getProductById(idProduct));
+  }
+
+  onBackToProducts() {
+    this.router.navigate(['/products']);
   }
 }
